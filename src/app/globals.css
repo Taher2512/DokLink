@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow-x: hidden;
+}
+
 #shape {
   width: 35rem;
   height: 35rem;
@@ -14,6 +18,13 @@
   transform: rotate(0deg);
   will-change: border-radius, transform;
   animation: blob 10s linear infinite;
+}
+
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
 }
 
 @keyframes blob {
