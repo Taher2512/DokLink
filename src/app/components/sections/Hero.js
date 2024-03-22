@@ -28,9 +28,9 @@ function Hero() {
   ];
 
   return (
-    // <BackgroundGradientAnimation className="-z-10">
-    <div className="h-screen flex flex-row backdrop-blur-3xl z-20">
-      <div className="flex flex-col w-2/3 justify-center px-10">
+    <BackgroundGradientAnimation className="-z-10">
+    <div className="relative flex flex-row justify-end backdrop-blur-3xl z-20">
+      <div className="absolute w-full h-screen flex flex-col justify-center px-10 border-2 border-black">
         <div>
           <TypewriterEffectSmooth words={words} />
         </div>
@@ -93,7 +93,7 @@ function Hero() {
         <Image src={"/hero-img-2.png"} width={700} height={700} />
       </div> */}
     </div>
-    // </BackgroundGradientAnimation>
+   </BackgroundGradientAnimation>
   );
 }
 

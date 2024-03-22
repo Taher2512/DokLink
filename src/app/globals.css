@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 #shape {
@@ -20,8 +20,11 @@ body {
   animation: blob 10s linear infinite;
 }
 
-.hero-img {
-  background-image: url("/hero-2.png");
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
 }
 
 @keyframes blob {
