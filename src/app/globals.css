@@ -6,6 +6,28 @@ body {
   overflow-x: hidden;
 }
 
+/* Scrollar Start */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0066b2;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00308f;
+}
+/* Scrollar end */
+
 #shape {
   width: 35rem;
   height: 35rem;
@@ -20,12 +42,12 @@ body {
   animation: blob 10s linear infinite;
 }
 
-.hide-scrollbar {
+/* .hide-scrollbar {
   &::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
-}
+} */
 
 @keyframes blob {
   0%,

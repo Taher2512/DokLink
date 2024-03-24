@@ -6,23 +6,13 @@ import Image from "next/image";
 function Services() {
   const content = [
     {
-      title: "Collaborative Editing",
+      title: "Seamless Appointment Booking",
       description:
-        "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
-      content: (
-        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-          Collaborative Editing
-        </div>
-      ),
-    },
-    {
-      title: "Real time changes",
-      description:
-        "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+        "Our platform provides a hassle-free experience for scheduling doctor appointments, reducing wait times and enhancing accessibility.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
           <Image
-            src="/linear.webp"
+            src="/scroll-1.jpg"
             width={300}
             height={300}
             className="h-full w-full object-cover"
@@ -32,22 +22,130 @@ function Services() {
       ),
     },
     {
-      title: "Version control",
+      title: "Real-time Bed Reservation",
       description:
-        "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+        "Users can instantly reserve hospital beds, ensuring prompt access to critical care facilities during emergencies.",
       content: (
-        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-          Version control
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-2.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
         </div>
       ),
     },
     {
-      title: "Running out of content",
+      title: "mHealth Solutions:",
       description:
-        "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+        "Incorporating mobile health applications empowers patients to monitor their health, access medical information, keep track of past medical prescriptions and reports and communicate with healthcare providers through smartphones or wearable devices.",
       content: (
-        <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-          Running out of content
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-3.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "24/7 Emergency Support",
+      description:
+        "Users have access to round-the-clock emergency assistance, ensuring prompt response and care during critical situations.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-4.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Data-driven Healthcare Delivery",
+      description:
+        "Utilizing advanced analytics, we optimize resource allocation and improve decision-making for better patient outcomes.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-5.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Innovative Bed Management System",
+      description:
+        "Our system streamlines bed allocation, minimizing shortages and maximizing hospital efficiency.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-6.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Mobile Accessibility",
+      description:
+        "Access to our services anytime, anywhere, providing convenience and flexibility.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-7.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Integrated Telemedicine Services:",
+      description:
+        "Our platform offers integrated telemedicine options, enabling remote consultations and follow-ups for added convenience.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-8.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Multi-language Support",
+      description:
+        "We offer support for multiple languages, ensuring accessibility for diverse populations and improving user experience.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <Image
+            src="/scroll-9.jpg"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+            alt="linear board demo"
+          />
         </div>
       ),
     },
