@@ -1,7 +1,7 @@
 import React from "react";
 import { IconPhone } from "@tabler/icons-react";
 
-function Hero() {
+function Hero({ scrollToRef, servicesRef, contactRef }) {
   return (
     <div className="w-full h-screen flex flex-row bg-blue-800">
       <div className="relative w-1/2 h-full flex flex-col justify-center items-center pl-20 z-10">
@@ -17,10 +17,16 @@ function Hero() {
           Fingertips!
         </p>
         <div className="flex flex-row">
-          <button className="bg-white rounded-md p-3 mr-6 font-semibold">
+          <button
+            onClick={() => scrollToRef(servicesRef)}
+            className="bg-white rounded-md p-3 mr-6 font-semibold hover:bg-gray-200"
+          >
             Our Services
           </button>
-          <button className="flex flex-row border-white border-2 rounded-md p-3 text-white font-semibold">
+          <button
+            onClick={() => scrollToRef(contactRef)}
+            className="flex flex-row border-white border-2 rounded-md p-3 text-white font-semibold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
+          >
             <IconPhone className="mr-1" /> Contact Us
           </button>
         </div>
@@ -38,7 +44,7 @@ function Hero() {
           src="./hero-blob-1.png"
           className="absolute bottom-0 h-auto w-auto -z-10 opacity-15"
         />
-        <img src="./hero-3.png" className="h-5/6 w-auto" />
+        <img src="./hero-4.png" className="h-[95vh] w-auto object-cover" />
       </div>
     </div>
   );

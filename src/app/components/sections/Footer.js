@@ -1,29 +1,44 @@
 import React from "react";
 
-function Footer() {
+function Footer({ contactRef }) {
   return (
     //    Footer Container
-    <footer class="flex flex-col items-center bg-[#0a4275] text-center text-white">
-      <div class="container p-6">
-        <div class="">
-          <p class="flex items-center justify-center">
-            <span class="me-4">Register for free</span>
-            <button
-              type="button"
-              class="inline-block rounded-full border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-300 hover:text-neutral-200 focus:border-neutral-300 focus:text-neutral-200 focus:outline-none focus:ring-0 active:border-neutral-300 active:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600"
-              data-twe-ripple-init
-              data-twe-ripple-color="light"
-            >
-              Sign up!
-            </button>
-          </p>
+    <footer
+      ref={contactRef}
+      className="flex flex-col items-center bg-gray-800 text-center text-white"
+    >
+      <div className="container p-6 border-b-2 border-b-gray-700">
+        <div className="">
+          <div className="flex flex-col items-center justify-center">
+            <p className="me-4 text-3xl mb-6">Contact Us</p>
+            <div>
+              <div className="flex flex-row justify-between">
+                <p className="me-4 w-1/5 text-start">Mobile: </p>
+                <p className="me-4 w-4/5 text-end">
+                  +91 6291449089 / +91 8100604497
+                </p>
+              </div>
+              <div className="flex flex-row justify-between">
+                <p className="me-4 w-1/5 text-start">Whatsapp: </p>
+                <p className="me-4 w-4/5 text-end">
+                  +91 6291449089 / +91 8100604497
+                </p>
+              </div>
+              <div className="flex flex-row justify-between">
+                <p className="me-4 w-1/5 text-start">Email: </p>
+                <p className="me-4 w-4/5 text-end">
+                  rohitkrishnendu024@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Copyright Section */}
-      <div class="w-full bg-black/20 p-4 text-center">
-        © 2023 Copyright:
-        <a href="https://tw-elements.com/">TW Elements</a>
+      <div className="w-full bg-gray-800 p-4 text-center">
+        © 2024 Copyright: DokLink
+        {/* <a href="https://tw-elements.com/">DokLink</a> */}
       </div>
     </footer>
   );

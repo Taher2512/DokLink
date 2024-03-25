@@ -3,7 +3,7 @@ import React from "react";
 import { StickyScroll } from "../ui/sticky-scroll-reveal";
 import Image from "next/image";
 
-function Services() {
+function Services({ servicesRef }) {
   const content = [
     {
       title: "Seamless Appointment Booking",
@@ -152,7 +152,7 @@ function Services() {
   ];
 
   return (
-    <div>
+    <div ref={servicesRef}>
       <StickyScroll content={content} />
     </div>
   );
