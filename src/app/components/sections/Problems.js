@@ -25,14 +25,14 @@ function Problems() {
       title: "Limited access to timely medical services",
       description:
         "Many individuals face delays in accessing critical medical care, leading to preventable fatalities.",
-      header: <GridImg />,
+      header: <GridImg url={"/hero-img.jpg"} />,
       icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "Insufficient medical facilities in urban and rural area",
       description:
         "Current methods for booking appointments are cumbersome and time-consuming, hindering access to care.",
-      header: <GridImg />,
+      header: <GridImg url={"/hero-img.jpg"} />,
       icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     },
     {
