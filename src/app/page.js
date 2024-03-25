@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       {/* <Navbar /> */}
-      <Hero />
+      <Hero2 />
       <Problems />
       <Services />
       <Problems />
