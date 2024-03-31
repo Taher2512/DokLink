@@ -12,7 +12,7 @@ const content = [
           src="/scroll-1.jpg"
           width={300}
           height={300}
-          className="h-full w-full object-cover rounded-full rounded-full"
+          className="h-full w-full object-cover rounded-full"
           alt="linear board demo"
         />
       </div>

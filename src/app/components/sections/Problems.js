@@ -33,7 +33,7 @@ function Problems() {
       description:
         "Current methods for booking appointments are cumbersome and time-consuming, hindering access to care.",
       header: <GridImg url={"/problem2.jpg"} />,
-      icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+      // icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "Challenges in hospital bed management",

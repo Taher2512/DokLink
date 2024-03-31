@@ -32,7 +32,7 @@ export const BentoGridItem = ({
         <div className="GilroyBold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
         </div>
-        <div className="GilroyLight text-neutral-600 text-xs dark:text-neutral-300">
+        <div className="GilroyLight text-neutral-600 text-sm dark:text-neutral-300">
           {description}
         </div>
       </div>
