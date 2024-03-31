@@ -3,18 +3,14 @@ import { IconPhone } from "@tabler/icons-react";
 
 function Hero({ scrollToRef, servicesRef, contactRef }) {
   return (
-    <div className="w-full h-screen flex flex-row bg-blue-800">
-      <div className="relative w-1/2 h-full flex flex-col justify-center  pl-40 z-10">
+    <div className="w-full h-screen flex flex-row bg-blue-800 border-b-2 border-gray-200">
+      <div className="relative w-1/2 h-full flex flex-col justify-center pl-40 z-10">
         <img
           src="./hero-blob-2.png"
-          className="absolute -top-4 -left-10 h-auto w-auto -z-10 opacity-15"
+          className="absolute -top-24 -left-10 h-auto w-auto -z-10 opacity-15"
         />
-        <p className="text-8xl text-white mb-4 ManropeBold">
-          Your Health,
-        </p>
-        <p className="text-8xl text-white mb-4 ManropeBold">
-          Your Way!
-        </p>
+        <p className="text-8xl text-white mb-4 ManropeBold">Your Health,</p>
+        <p className="text-8xl text-white mb-4 ManropeBold">Your Way!</p>
         <p className="text-xl text-slate-100 mb-10 GilroyLight pt-4">
           Seamless Doctor Appointments and Hospital Bed Booking at Your
           Fingertips!
@@ -22,13 +18,13 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
         <div className="flex flex-row">
           <button
             onClick={() => scrollToRef(servicesRef)}
-            className="bg-white rounded-md p-3 mr-6 GilroyBold hover:bg-gray-200"
+            className="bg-white rounded-md p-3 mr-6 w-40 GilroyBold hover:bg-gray-200 text-[#1E40AF] text-lg"
           >
             Our Services
           </button>
           <button
             onClick={() => scrollToRef(contactRef)}
-            className="flex flex-row border-white border-2 rounded-md p-3 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
+            className="flex flex-row justify-center border-white border-2 text-lg rounded-md p-3 w-40 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
           >
             <IconPhone className="mr-1" /> Contact Us
           </button>

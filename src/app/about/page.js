@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../components/sections/Navbar";
+import Footer from "../components/sections/Footer";
 
 function About() {
   return (
@@ -25,7 +25,7 @@ function About() {
             alt="Team Member 1"
           />
         </div>
-        <div className="h-96 rounded-xl overflow-hidden"> 
+        <div className="h-96 rounded-xl overflow-hidden">
           <img
             src="./member2.jpg"
             className="w-full h-full object-cover object-top"
@@ -37,7 +37,7 @@ function About() {
           <h1 className="GilroyBold text-2xl">Krishnendu Gupta</h1>
           <h3 className="GilroyLight text-xl">Director, Doklink</h3>
         </div>
-        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl h-auto max-h-80"> 
+        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl h-auto max-h-80">
           <h1 className="GilroyBold text-2xl">Rohit Kumar Choubey</h1>
           <h3 className="GilroyLight text-xl">Director, Doklink</h3>
         </div>
