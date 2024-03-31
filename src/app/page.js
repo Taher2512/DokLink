@@ -3,10 +3,11 @@
 import { useRef } from "react";
 import Footer from "./components/sections/Footer";
 import HeadingCard from "./components/sections/HeadingCard";
-import Hero from "./components/sections/Hero";
-import Navbar from "./components/sections/Navbar";
+import Hero from "./components/sections/Hero.js";
+import Navbar from "./components/sections/Navbar.jsx";
 import Problems from "./components/sections/Problems";
 import Services from "./components/sections/Services";
+import About from "./components/sections/About.jsx";
 
 export default function Home() {
   const servicesRef = useRef(null);
@@ -20,7 +21,7 @@ export default function Home() {
   };
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <Hero
         scrollToRef={scrollToRef}
         servicesRef={servicesRef}
@@ -30,7 +31,8 @@ export default function Home() {
       <Problems />
       <HeadingCard heading={"Solutions / Services Offered"} services={true} />
       <Services servicesRef={servicesRef} />
-      <Footer contactRef={contactRef} />
+      <Footer contactRef={contactRef} /> */}
+      <About />
     </>
   );
 }

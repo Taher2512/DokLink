@@ -25,21 +25,21 @@ function Problems() {
       title: "Limited access to timely medical services",
       description:
         "Many individuals face delays in accessing critical medical care, leading to preventable fatalities.",
-      header: <GridImg url={"/hero-img.jpg"} />,
+      header: <GridImg url={"/problem1.jpg"} />,
       icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "Insufficient medical facilities in urban and rural area",
       description:
         "Current methods for booking appointments are cumbersome and time-consuming, hindering access to care.",
-      header: <GridImg url={"/hero-img.jpg"} />,
+      header: <GridImg url={"/problem2.jpg"} />,
       icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "Challenges in hospital bed management",
       description:
         "Hospitals struggle with bed allocation, resulting in shortages during emergencies.",
-      header: <GridImg url={"/hero-img.jpg"} />,
+      header: <GridImg url={"/problem3.jpg"} />,
 
       icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
     },
@@ -47,19 +47,19 @@ function Problems() {
       title: "Lack of systematic approach to appointments and bed booking",
       description:
         "The absence of streamlined processes leads to confusion and inefficiencies in healthcare delivery",
-      header: <GridImg url={"/hero-img.jpg"} />,
+      header: <GridImg url={"/problem4.jpg"} />,
       icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "The Pursuit of Knowledge",
       description: "Join the quest for understanding and enlightenment.",
-      header: <GridImg url={"/hero-img.jpg"} />,
+      header: <GridImg url={"/problem5.jpg"} />,
       icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
     },
   ];
 
   return (
-    <BentoGrid className="max-w-7xl mx-auto">
+    <BentoGrid className="max-w-7xl mx-auto mt-8 mb-16">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}

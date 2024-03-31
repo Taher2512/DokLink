@@ -13,6 +13,7 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+
     extend: {
       animation: {
         first: "moveVertical 30s ease infinite",

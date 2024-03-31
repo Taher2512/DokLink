@@ -153,7 +153,7 @@ function Services({ servicesRef }) {
 
   return (
     <div ref={servicesRef}>
-      <StickyScroll content={content} />
+      <StickyScroll content={content} className="overflow-hidden" />
     </div>
   );
 }
