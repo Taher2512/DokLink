@@ -166,10 +166,10 @@ function Services({ servicesRef }) {
               src="./hero-blob-1.png"
               className="absolute -top-24 -left-10 h-80 w-auto -z-10 opacity-15"
             />
-            <h2 className="text-3xl font-semibold text-white mb-6">
+            <h2 className="text-3xl GilroyBold text-white mb-6">
               {item.title}
             </h2>
-            <p className="mt-2 text-white text-lg">{item.description}</p>
+            <p className="mt-2 GilroyLight text-white text-lg">{item.description}</p>
           </div>
           <div className="rounded-full">{item.content}</div>
         </div>
