@@ -27,7 +27,10 @@ export default function Home() {
       />
       <HeadingCard heading={"What are the problems?"} services={false} />
       <Problems />
-      <HeadingCard heading={"Solutions / Services Offered:"} services={true} />
+      <HeadingCard
+        heading={"Our Solutions / Services Offered:"}
+        services={true}
+      />
       <Services servicesRef={servicesRef} />
       <Footer contactRef={contactRef} />
     </>

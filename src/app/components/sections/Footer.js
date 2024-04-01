@@ -21,7 +21,7 @@ function Footer({ contactRef }) {
               <div className="flex flex-row justify-between">
                 <p className="me-4 w-1/5 text-start">Whatsapp: </p>
                 <p className="me-4 w-4/5 text-end">
-                  +91 6291449089 / +91 8100604497
+                  +91 6291449089 / +918100604497
                 </p>
               </div>
               <div className="flex flex-row justify-between">
