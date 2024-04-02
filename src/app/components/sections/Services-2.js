@@ -115,7 +115,7 @@ const content = [
     ),
   },
   {
-    title: "Integrated Telemedicine Services:",
+    title: "Integrated Telemedicine Services",
     description:
       "Our platform offers integrated telemedicine options, enabling remote consultations and follow-ups for added convenience.",
     content: (
@@ -157,21 +157,25 @@ function Services({ servicesRef }) {
       {content.map((item, index) => (
         <div
           key={index}
-          className={`flex ${
-            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+          className={`flex flex-col-reverse ${
+            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           } items-center justify-around gap-4 w-5/6`}
         >
-          <div className="w-1/2 relative">
+          <div className="md:w-1/2 md:my-0 my-12 relative">
             <img
               src="./hero-blob-1.png"
-              className="absolute -top-24 -left-10 h-80 w-auto -z-10 opacity-15"
+              className="absolute md:-top-24 -top-12 md:-left-10 md:h-80 h-60 w-auto -z-10 opacity-15"
             />
-            <h2 className="text-3xl GilroyBold text-white mb-6">
+            <h2 className="md:text-3xl text-2xl font-semibold text-white mb-6 md:text-start text-center">
               {item.title}
             </h2>
-            <p className="mt-2 GilroyLight text-white text-lg">{item.description}</p>
+            <p className="mt-2 text-white md:text-lg text-base md:text-start text-center">
+              {item.description}
+            </p>
           </div>
-          <div className="rounded-full">{item.content}</div>
+          <div className="rounded-full md:w-auto w-3/4 md:mt-0 mt-4">
+            {item.content}
+          </div>
         </div>
       ))}
     </div>
