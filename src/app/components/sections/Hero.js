@@ -11,7 +11,7 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
         />
         <img
           src="./hero-asset-2.png"
-          className="absolute top-9 -right-5 h-36 w-60 -z-10 opacity-15 md:hidden block"
+          className="absolute top-9 right-0 h-36 w-60 -z-10 opacity-15 md:hidden block"
         />
         <p className="md:text-8xl text-5xl text-white mb-4 ManropeBold">
           Your Health,

@@ -27,7 +27,6 @@ export default function Home() {
         contactRef={contactRef}
       />
       <HeadingCard heading={"What are the problems?"} services={false} />
-      {/* <Problems /> */}
       <Problems2 />
       <HeadingCard heading={"Solutions / Services Offered:"} services={true} />
       <Services servicesRef={servicesRef} />
