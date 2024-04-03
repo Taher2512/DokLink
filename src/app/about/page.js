@@ -6,8 +6,8 @@ function About() {
   return (
     <>
       <Navbar />
-      <h1 className="ManropeBold text-7xl text-white ml-20 mt-20">About Us</h1>
-      <p className="GilroyLight text-2xl w-3/4 ml-20 mt-10 text-white">
+      <h1 className="ManropeBold sm:text-7xl text-3xl text-center sm:text-left text-white sm:ml-20 mt-20">About Us</h1>
+      <p className="GilroyLight text-lg sm:text-2xl w-3/4 sm:ml-20 ml-12 text-center sm:text-left mt-10 text-white">
         DokLink is revolutionizing healthcare accessibility by offering a
         seamless and user-friendly platform that enables patients to book doctor
         appointments & reserve hospital beds with ease, addressing a critical
@@ -15,17 +15,17 @@ function About() {
         timely medical assistance, we streamline the healthcare process,
         ensuring efficiency & convenience for all.
       </p>
-      <h1 className="ManropeBold text-7xl text-white ml-20 mt-20">Our Team</h1>
+      <h1 className="ManropeBold sm:text-7xl text-3xl text-center sm:text-left text-white sm:ml-20 mt-20">Our Team</h1>
 
-      <div className="grid grid-cols-2 auto-rows-auto gap-x-8 gap-y-4 w-[60%] ml-20 mt-10 mb-16">
-        <div className="h-96 overflow-hidden rounded-xl">
+      <div className=" grid sm:grid-cols-2 sm:grid-rows-2  grid-rows-4 gap-x-8 gap-y-4 w-[60%] ml-20 mt-10 sm:h-auto h-[45rem]">
+        <div className="max-h-96 overflow-hidden rounded-xl">
           <img
             src="./member1.jpg"
             className="w-full h-full object-cover "
             alt="Team Member 1"
           />
         </div>
-        <div className="h-96 rounded-xl overflow-hidden">
+        <div className="max-h-96 rounded-xl overflow-hidden">
           <img
             src="./member2.jpg"
             className="w-full h-full object-cover object-top"
@@ -33,13 +33,13 @@ function About() {
           />
         </div>
 
-        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl h-auto max-h-80">
-          <h1 className="GilroyBold text-2xl">Krishnendu Gupta</h1>
-          <h3 className="GilroyLight text-xl">Director, Doklink</h3>
+        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24 row-start-2">
+          <h1 className="GilroyBold sm:text-2xl text-lg">Krishnendu Gupta</h1>
+          <h3 className="GilroyLight sm:text-xl text-sm">Director, Doklink</h3>
         </div>
-        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl h-auto max-h-80">
-          <h1 className="GilroyBold text-2xl">Rohit Kumar Choubey</h1>
-          <h3 className="GilroyLight text-xl">Director, Doklink</h3>
+        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24 ">
+          <h1 className="GilroyBold sm:text-2xl text-lg">Rohit Kumar Choubey</h1>
+          <h3 className="GilroyLight sm:text-xl text-sm">Director, Doklink</h3>
         </div>
       </div>
       <Footer />

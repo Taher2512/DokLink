@@ -7,7 +7,7 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
       <div className="relative md:w-1/2 w-full h-full flex flex-col justify-center items-center md:items-start p-16 md:p-0 md:pl-40 z-10">
         <img
           src="./hero-blob-2.png"
-          className="absolute -top-24 -left-10 h-auto w-auto -z-10 opacity-15"
+          className="absolute -top-24 -left-4 h-auto w-auto -z-10 opacity-15"
         />
         <img
           src="./hero-asset-2.png"
