@@ -13,10 +13,10 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
           src="./hero-asset-2.png"
           className="absolute top-9 right-0 h-36 w-60 -z-10 opacity-15 md:hidden block"
         />
-        <p className="md:text-8xl text-5xl text-white mb-4 ManropeBold">
+        <p className="md:text-8xl text-5xl text-nowrap text-center md:text-left text-white mb-4 ManropeBold">
           Your Health,
         </p>
-        <p className="md:text-8xl text-5xl text-white mb-4 ManropeBold">
+        <p className="md:text-8xl text-5xl text-nowrap text-center md:text-left text-white mb-4 ManropeBold">
           Your Way!
         </p>
         <p className="md:text-xl text-2xl text-center md:text-start text-slate-100 mb-10 GilroyLight pt-4">
@@ -53,7 +53,11 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
         />
         <img
           src="./hero-4.png"
-          className="h-[95vh] w-auto object-cover md:block hidden"
+          className="h-[95vh] w-auto object-cover xl:block hidden"
+        />
+        <img
+          src="./hero-4.png"
+          className="h-[85vh] w-auto object-cover xl:hidden lg:block hidden"
         />
       </div>
     </div>

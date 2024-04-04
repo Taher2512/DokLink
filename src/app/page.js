@@ -20,7 +20,7 @@ export default function Home() {
   };
   return (
     <>
-      <Navbar scrollToRef={scrollToRef} servicesRef={servicesRef} />
+      <Navbar />
       <Hero
         scrollToRef={scrollToRef}
         servicesRef={servicesRef}
