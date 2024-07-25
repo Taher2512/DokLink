@@ -12,11 +12,8 @@ function UserLogin() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [qualifications, setQualifications] = useState([
-    { label: "Degree", value: "degree" },
-    { label: "Specialization", value: "specialization" },
-  ]);
-  const [selectedQualification, setSelectedQualification] = useState("");
+  const [degree, setDegree] = useState("");
+  const [specialization, setSpecialization] = useState("");
   const [registrationNumber, setRegistrationNumber] = useState("");
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -85,6 +82,9 @@ function UserLogin() {
       fullName === "" ||
       email === "" ||
       mobile === "" ||
+      degree === "" ||
+      specialization === "" ||
+      registrationNumber === "" ||
       selectedCountry.value === "" ||
       selectedState.value === "" ||
       selectedCity.value === "" ||
@@ -100,6 +100,9 @@ function UserLogin() {
         fullName,
         email,
         mobile,
+        degree,
+        specialization,
+        registrationNumber,
         selectedCountry,
         selectedState,
         selectedCity,
@@ -154,17 +157,32 @@ function UserLogin() {
               Mobile No.
             </label>
           </div>
-          <div className="my-7">
-            <Select
-              options={qualifications}
-              defaultValue={{}}
-              value={selectedQualification}
-              placeholder="Select Education Qualification..."
-              isSearchable
-              onChange={setSelectedQualification}
+          <h2 className="text-white font-semibold text-xl">
+            Education Qualifications:
+          </h2>
+          <div className="relative z-0 pl-6 w-full my-8 group">
+            <input
+              type="number"
+              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+              value={degree}
+              onChange={(e) => setDegree(e.target.value)}
             />
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              Degree
+            </label>
           </div>
-          <div className="relative z-0 w-full my-8 group">
+          <div className="relative z-0 pl-6 w-full my-8 group">
+            <input
+              type="number"
+              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+              value={specialization}
+              onChange={(e) => setSpecialization(e.target.value)}
+            />
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              Specialization
+            </label>
+          </div>
+          <div className="relative z-0 pl-6 w-full my-8 group">
             <input
               type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
