@@ -7,7 +7,21 @@ import Select from "react-select";
 import { City, Country, State } from "country-state-city";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import {db} from "../components/utils/config"
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 function UserLogin() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,7 +50,7 @@ function UserLogin() {
   const [genderZIndex, setGenderZIndex] = useState(1000);
   const [birthDate, setBirthDate] = useState("");
   const [showError, setShowError] = useState(false);
-
+  const router=useRouter()
   const options = [
     {
       value: 1,
@@ -138,17 +152,26 @@ function UserLogin() {
       return;
     } else {
       setShowError(false);
-      console.log({
-        fullName,
-        email,
-        mobile,
-        selectedCountry,
-        selectedState,
-        selectedCity,
-        zipCode,
-        selectedGender,
-        birthDate,
-      });
+      const q=query(collection(db,"userdetail"),where("email","==",email));
+      const unsubscribe=onSnapshot(q,async(querySnapshot)=>{
+        let arr=querySnapshot.docs.filter((doc)=>doc.email===email)
+        console.log(querySnapshot.docs)
+        if(querySnapshot.docs.length>0){
+          alert("User already exists")
+        }
+        else{
+           axios.post("https://gmtserver.onrender.com/generateOtp",{email:email}).then(async(response)=>{
+            if(response.data.error==0){
+               addDoc(collection(db,"otp"),{email,otp:response.data.otp,expiresIn:Date.now()+9*60*1000,used:0}).then(()=>{           localStorage.setItem("details",JSON.stringify({fullName,email,mobile,country:selectedCountry,state:selectedState,city:selectedCity,zipCode,gender:selectedGender,dob:birthDate}))
+               localStorage.setItem("details",JSON.stringify({fullName,email,mobile,country:selectedCountry,state:selectedState,city:selectedCity,zipCode,gender:selectedGender,dob:birthDate}))
+                router.push("/otp-verification")
+                
+               })
+            }
+           })
+        }
+      })
+
     }
   };
 
