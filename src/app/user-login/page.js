@@ -43,7 +43,7 @@ function UserLogin() {
     { label: "Other", value: "other" },
   ]);
   const [selectedGender, setSelectedGender] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [countryZIndex, setCountryZIndex] = useState(4000);
   const [stateZIndex, setStateZIndex] = useState(3000);
   const [cityZIndex, setCityZIndex] = useState(2000);
