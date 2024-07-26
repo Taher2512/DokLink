@@ -43,7 +43,7 @@ const ComingSoonPage = () => {
             isHovered ? "bg-purple-700 transform scale-105" : ""
           }`}
         >
-          Grab Your Chocolate!! 🍫
+          Now Grab Your Chocolate!! 🍫
         </button>
       </div>
     </div>
