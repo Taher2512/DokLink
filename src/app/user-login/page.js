@@ -162,7 +162,7 @@ function UserLogin() {
         let arr = querySnapshot.docs.filter((doc) => doc.email === email);
         console.log(querySnapshot.docs);
         if (querySnapshot.docs.length > 0) {
-          alert("User already exists");
+          // alert("User already exists");
           setLoading(false);
         } else {
           axios
