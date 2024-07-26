@@ -39,10 +39,13 @@ function Navbar() {
           About Us
         </Link>
       </div>
-      <div className="absolute right-0 mr-32" ref={dropdownRef}>
+      <div
+        className="relative md:absolute right-0 m-0 md:mr-32 z-50"
+        ref={dropdownRef}
+      >
         <button
           onClick={toggleDropdown}
-          className="flex items-center justify-between w-full py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0 md:w-auto"
+          className="flex items-center justify-between w-full py-2 px-3 text-white rounded hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0 md:w-auto"
         >
           Sign In{" "}
           <svg
