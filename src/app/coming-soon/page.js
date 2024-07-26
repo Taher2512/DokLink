@@ -31,8 +31,8 @@ const ComingSoonPage = () => {
         </h1>
 
         <p className="text-center text-gray-600 mb-6">
-          We're excited to announce that our app is coming soon to the Google
-          Play Store. Stay tuned for updates and be among the first to
+          We&apos;re excited to announce that our app is coming soon to the
+          Google Play Store. Stay tuned for updates and be among the first to
           experience our amazing features!
         </p>
 
