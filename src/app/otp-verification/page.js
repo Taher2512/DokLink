@@ -57,6 +57,7 @@ const getData=async()=>{
         await updateDoc(doc(db,"otp",response.docs[0].id),{used:1})
         await addDoc(collection(db,"userdetail"),{...data,createdAt:Date.now()})
         await addDoc(collection(db,"users"),{email:data.email,data:Date.now(),googleLogin:0})
+         localStorage.setItem('details',{})
         const queryParams = new URLSearchParams({
           id:response.docs[0].id
         }).toString();
