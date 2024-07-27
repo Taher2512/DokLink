@@ -49,6 +49,7 @@ function UserLogin() {
   const [cityZIndex, setCityZIndex] = useState(2000);
   const [genderZIndex, setGenderZIndex] = useState(1000);
   const [birthDate, setBirthDate] = useState("");
+  const [suggestions, setSuggestions] = useState("");
   const [showError, setShowError] = useState(false);
   const router = useRouter();
   const options = [
@@ -189,6 +190,7 @@ function UserLogin() {
                       zipCode,
                       gender: selectedGender,
                       dob: birthDate,
+                      suggestions: suggestions,
                     })
                   );
                   localStorage.setItem(
@@ -203,6 +205,7 @@ function UserLogin() {
                       zipCode,
                       gender: selectedGender,
                       dob: birthDate,
+                      suggestions: suggestions,
                     })
                   );
                   router.push("/otp-verification");
@@ -228,6 +231,7 @@ function UserLogin() {
         <div className="mx-16 my-12">
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={fullName}
@@ -239,6 +243,7 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="email"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={email}
@@ -250,6 +255,7 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="number"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={mobile}
@@ -293,6 +299,7 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="number"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={zipCode}
@@ -325,6 +332,20 @@ function UserLogin() {
               placeholder="Select Gender..."
               onChange={setSelectedGender}
             />
+          </div>
+          <div className="relative z-0 w-full mb-8 mt-9 group">
+            <textarea
+              placeholder=""
+              type="text"
+              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+              value={suggestions}
+              onChange={(e) => {
+                setSuggestions(e.target.value);
+              }}
+            />
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              Anything you want to suggest?
+            </label>
           </div>
           <div className="mt-16">
             {showError && (
