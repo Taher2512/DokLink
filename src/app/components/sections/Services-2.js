@@ -3,25 +3,9 @@ import Image from "next/image";
 
 const content = [
   {
-    title: "Seamless Appointment Booking",
+    title: "Real-Time Bed Reservation",
     description:
-      "Our platform provides a hassle-free experience for scheduling doctor appointments, reducing wait times and enhancing accessibility.",
-    content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
-        <Image
-          src="/scroll-1.jpg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover rounded-full"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Real-time Bed Reservation",
-    description:
-      "Users can instantly reserve hospital beds, ensuring prompt access to critical care facilities during emergencies.",
+      "People can instantly reserve hospital beds in advance to get real time updates about bed availability, thus reducing patient waiting time and ensuring a streamlined admission process.",
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
@@ -35,9 +19,25 @@ const content = [
     ),
   },
   {
-    title: "mHealth Solutions",
+    title: "Seamless Appointment Booking",
     description:
-      "Incorporating mobile health applications empowers patients to monitor their health, access medical information, keep track of past medical prescriptions and reports and communicate with healthcare providers through smartphones or wearable devices.",
+      "Our platform provides a hassle-free experience for scheduling in clinic doctor appointments, reducing wait times and enhancing accessibility.",
+    content: (
+      <div className="h-full w-full flex items-center justify-center text-white">
+        <Image
+          src="/scroll-1.jpg"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover rounded-full"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Paperless Processes",
+    description:
+      "DokLink eliminates the hectic physical paperwork required during admission procedure in hospitals to ensure efficient and stress-free patient experience.",
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
@@ -51,25 +51,9 @@ const content = [
     ),
   },
   {
-    title: "24/7 Emergency Support",
+    title: "Digital Prescription Storage",
     description:
-      "Users have access to round-the-clock emergency assistance, ensuring prompt response and care during critical situations.",
-    content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
-        <Image
-          src="/scroll-4.jpg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover rounded-full"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Data-driven Healthcare Delivery",
-    description:
-      "Utilizing advanced analytics, we optimize resource allocation and improve decision-making for better patient outcomes.",
+      "A centralized digital locker for storage of past medical prescriptions and reports for easy access and retrieval for future medical needs.",
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
@@ -83,45 +67,13 @@ const content = [
     ),
   },
   {
-    title: "Innovative Bed Management System",
+    title: "Emergency Services Integration",
     description:
-      "Our system streamlines bed allocation, minimizing shortages and maximizing hospital efficiency.",
+      "Quick notifications to police and ambulance services to ensure timely assistance in critical situations.",
     content: (
       <div className="h-full w-full flex items-center justify-center text-white">
         <Image
-          src="/scroll-6.jpg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover rounded-full"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Mobile Accessibility",
-    description:
-      "Access to our services anytime, anywhere, providing convenience and flexibility.",
-    content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
-        <Image
-          src="/scroll-7.jpg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover rounded-full"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Integrated Telemedicine Services",
-    description:
-      "Our platform offers integrated telemedicine options, enabling remote consultations and follow-ups for added convenience.",
-    content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
-        <Image
-          src="/scroll-8.jpg"
+          src="/problem4.jpg"
           width={300}
           height={300}
           className="h-full w-full object-cover rounded-full"

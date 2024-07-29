@@ -22,37 +22,38 @@ function Problems() {
   );
   const items = [
     {
-      title: "Limited access to timely medical services",
+      title: "Long Wait Times",
       description:
-        "Many individuals face delays in accessing critical medical care, leading to preventable fatalities.",
+        "Patients often face long wait times for doctor appointments and hospital admissions, causing stress and potential health risks.",
       header: <GridImg url={"/problem1.jpg"} />,
       icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
     },
     {
-      title: "Insufficient medical facilities in urban and rural area",
+      title: "Inadequate Emergency Response",
       description:
-        "Current methods for booking appointments are cumbersome and time-consuming, hindering access to care.",
+        "During critical situations, coordinating with emergency services like police and ambulances is often slow and inefficient.",
       header: <GridImg url={"/problem2.jpg"} />,
       // icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
     },
     {
-      title: "Challenges in hospital bed management",
+      title: "Limited Access to Real Time Information",
       description:
-        "Hospitals struggle with bed allocation, resulting in shortages during emergencies.",
+        "Patients lack access to real-time updates on doctor availability, hospital bed status, and emergency services.",
       header: <GridImg url={"/problem3.jpg"} />,
 
       icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
     },
     {
-      title: "Lack of systematic approach to appointments and bed booking",
+      title: "Inadequate Emergency Response",
       description:
-        "The absence of streamlined processes leads to confusion and inefficiencies in healthcare delivery",
+        "During critical situations, coordinating with emergency services like police and ambulances is often slow and inefficient.",
       header: <GridImg url={"/problem4.jpg"} />,
       icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
     },
     {
-      title: "The Pursuit of Knowledge",
-      description: "Join the quest for understanding and enlightenment.",
+      title: "Disorganized Medical Records",
+      description:
+        "Patients struggle with maintaining and accessing their medical records, leading to fragmented healthcare experiences.",
       header: <GridImg url={"/problem5.jpg"} />,
       icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
     },
