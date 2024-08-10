@@ -36,7 +36,7 @@ const ComingSoonPage = () => {
           experience our amazing features!
         </p>
 
-        <button
+        {/* <button
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className={`w-full bg-purple-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 ${
@@ -44,7 +44,7 @@ const ComingSoonPage = () => {
           }`}
         >
           Now Grab Your Chocolate!! 🍫
-        </button>
+        </button> */}
       </div>
     </div>
   );

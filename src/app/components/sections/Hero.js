@@ -1,5 +1,10 @@
 import React from "react";
-import { IconPhone } from "@tabler/icons-react";
+import {
+  IconPhone,
+  IconAmbulance,
+  IconStethoscope,
+  IconEmergencyBed,
+} from "@tabler/icons-react";
 
 function Hero({ scrollToRef, servicesRef, contactRef }) {
   return (
@@ -26,15 +31,29 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
         <div className="flex md:flex-row flex-col">
           <button
             onClick={() => scrollToRef(servicesRef)}
-            className="bg-white rounded-md p-3 mr-6 md:w-40 w-80 mb-3 md:mb-0 GilroyBold hover:bg-gray-200 text-[#1E40AF] text-lg"
+            className="flex flex-row items-center justify-center bg-white rounded-md p-3 mr-6 md:w-56 w-80 mb-3 md:mb-0 GilroyBold hover:bg-gray-200 text-[#1E40AF] text-lg"
           >
-            Our Services
+            <IconAmbulance className="mr-2" /> Our Services
           </button>
           <button
             onClick={() => scrollToRef(contactRef)}
-            className="flex flex-row justify-center border-white border-2 text-lg rounded-md p-3 md:w-40 w-80 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
+            className="flex flex-row items-center justify-center border-white border-2 text-lg rounded-md p-3 md:w-56 w-80 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
           >
-            <IconPhone className="mr-1" /> Contact Us
+            <IconPhone className="mr-2" /> Contact Us
+          </button>
+        </div>
+        <div className="flex md:flex-row flex-col mt-5">
+          <button
+            onClick={() => scrollToRef(contactRef)}
+            className="flex flex-row items-center justify-center border-white border-2 text-lg rounded-md p-3 mr-6 md:w-56 w-80 mb-3 md:mb-0 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
+          >
+            <IconEmergencyBed className="mr-2" /> Patient Sign In
+          </button>
+          <button
+            onClick={() => scrollToRef(contactRef)}
+            className="flex flex-row items-center justify-center border-white border-2 text-lg rounded-md p-3 md:w-56 w-80 text-white GilroyBold hover:bg-blue-200 hover:border-blue-200 hover:text-black"
+          >
+            <IconStethoscope className="mr-2" /> Doctor Sign In
           </button>
         </div>
         <img

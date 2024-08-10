@@ -22,7 +22,7 @@ import {
 } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-function UserLogin() {
+function PatientLogin() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -35,7 +35,7 @@ function UserLogin() {
   const [cityOpen, setCityOpen] = useState(false);
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [pinCode, setPinCode] = useState("");
   const [genderOpen, setGenderOpen] = useState(false);
   const [genders, setGenders] = useState([
     { label: "Male", value: "male" },
@@ -51,17 +51,8 @@ function UserLogin() {
   const [birthDate, setBirthDate] = useState("");
   const [suggestions, setSuggestions] = useState("");
   const [showError, setShowError] = useState(false);
+
   const router = useRouter();
-  const options = [
-    {
-      value: 1,
-      label: "Leanne Graham",
-    },
-    {
-      value: 2,
-      label: "Ervin Howell",
-    },
-  ];
 
   useEffect(() => {
     const allCountries = Country.getAllCountries();
@@ -146,7 +137,7 @@ function UserLogin() {
       selectedCountry.value === "" ||
       selectedState.value === "" ||
       selectedCity.value === "" ||
-      zipCode === "" ||
+      pinCode === "" ||
       selectedGender.value === "" ||
       birthDate === ""
     ) {
@@ -161,7 +152,6 @@ function UserLogin() {
       );
       const unsubscribe = onSnapshot(q, async (querySnapshot) => {
         let arr = querySnapshot.docs.filter((doc) => doc.email === email);
-        console.log(querySnapshot.docs);
         if (querySnapshot.docs.length > 0) {
           // alert("User already exists");
           setLoading(false);
@@ -187,7 +177,7 @@ function UserLogin() {
                       country: selectedCountry,
                       state: selectedState,
                       city: selectedCity,
-                      zipCode,
+                      pinCode,
                       gender: selectedGender,
                       dob: birthDate,
                       suggestions: suggestions,
@@ -202,13 +192,13 @@ function UserLogin() {
                       country: selectedCountry,
                       state: selectedState,
                       city: selectedCity,
-                      zipCode,
+                      pinCode,
                       gender: selectedGender,
                       dob: birthDate,
                       suggestions: suggestions,
                     })
                   );
-                  router.push("/otp-verification");
+                  router.push("/patient-otp-verification");
                   setLoading(false);
                 });
               }
@@ -222,7 +212,7 @@ function UserLogin() {
     <>
       <Navbar />
       <div className="flex justify-center items-center mt-16">
-        <h2 className="text-white font-semibold text-2xl">User Sign In</h2>
+        <h2 className="text-white font-semibold text-2xl">Patient Sign In</h2>
       </div>
       <form
         onSubmit={submitForm}
@@ -302,11 +292,11 @@ function UserLogin() {
               placeholder=""
               type="number"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
+              value={pinCode}
+              onChange={(e) => setPinCode(e.target.value)}
             />
             <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              ZIP Code
+              Pin Code
             </label>
           </div>
           <div className="my-7">
@@ -337,7 +327,7 @@ function UserLogin() {
             <textarea
               placeholder=""
               type="text"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
+              className="block py-2.5 sm:pt-5 pt-10 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={suggestions}
               onChange={(e) => {
                 setSuggestions(e.target.value);
@@ -367,10 +357,9 @@ function UserLogin() {
           </div>
         </div>
       </form>
-
       <Footer />
     </>
   );
 }
 
-export default UserLogin;
+export default PatientLogin;

@@ -15,12 +15,12 @@ function Problems2() {
             </p>
           </span>
           <span className="blobright sm:w-80 sm:h-80 w-40 h-40 mr-8 overflow-hidden ">
-            <img src="problem1.jpg" className="object-cover h-full sm:h-2/3" />
+            <img src="problem1.jpg" className="object-cover h-full" />
           </span>
         </div>
         <div className="bg-white/30 w-full sm:h-60 h-auto rounded-xl flex flex-col gap-4 sm:flex-row items-center justify-between px-4 sm:px-8 py-4">
           <span className="blobleft sm:w-80 sm:h-80 w-32 h-32 mr-8 overflow-hidden">
-            <img src="problem2.jpg" className="object-cover h-full sm:h-2/3" />
+            <img src="problem2.jpg" className="object-cover h-full" />
           </span>
           <span className="text-center sm:text-left">
             <h1 className="GilroyBold text-white text-xl sm:text-3xl">
@@ -43,12 +43,12 @@ function Problems2() {
             </p>
           </span>
           <span className="blobright sm:w-80 sm:h-80 w-32 h-32 mr-8 overflow-hidden">
-            <img src="problem3.jpg" className="object-cover h-full sm:h-2/3" />
+            <img src="problem3.jpg" className="object-cover h-full" />
           </span>
         </div>
         <div className="bg-white/30 w-full sm:h-60 h-auto rounded-xl flex flex-col gap-4 sm:flex-row items-center justify-between px-4 sm:px-8 py-4">
           <span className="blobleft sm:w-80 sm:h-80 w-32 h-32 mr-8 overflow-hidden">
-            <img src="problem4.jpg" className="object-cover h-full sm:h-2/3" />
+            <img src="problem4.jpg" className="object-cover h-full" />
           </span>
           <span className="text-center sm:text-left">
             <h1 className="GilroyBold text-white text-xl sm:text-3xl">
@@ -71,7 +71,7 @@ function Problems2() {
             </p>
           </span>
           <span className="blobright sm:w-80 sm:h-80 w-32 h-32 mr-8 overflow-hidden">
-            <img src="problem5.jpg" className="object-cover h-full sm:h-2/3" />
+            <img src="problem5.jpg" className="object-cover h-full" />
           </span>
         </div>
       </div>

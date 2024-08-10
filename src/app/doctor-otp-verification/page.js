@@ -15,7 +15,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { db } from "../components/utils/config";
 import { useRouter } from "next/navigation";
 
-const VerificationCode = () => {
+const DoctorOtpVerification = () => {
   const [code, setCode] = useState(["", "", "", ""]);
   const inputs = useRef([]);
   const [data, setdata] = useState();
@@ -52,7 +52,6 @@ const VerificationCode = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const verificationCode = code.join("");
-    console.log(data.email);
     const q = query(
       collection(db, "otp"),
       where("otp", "==", verificationCode),
@@ -68,11 +67,11 @@ const VerificationCode = () => {
       const data1 = response.docs[0].data();
       if (data1.expiresIn > Date.now()) {
         await updateDoc(doc(db, "otp", response.docs[0].id), { used: 1 });
-        await addDoc(collection(db, "userdetail"), {
+        await addDoc(collection(db, "doctordetail"), {
           ...data,
           createdAt: Date.now(),
         });
-        await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, "doctors"), {
           email: data.email,
           data: Date.now(),
           googleLogin: 0,
@@ -127,4 +126,4 @@ const VerificationCode = () => {
   );
 };
 
-export default VerificationCode;
+export default DoctorOtpVerification;

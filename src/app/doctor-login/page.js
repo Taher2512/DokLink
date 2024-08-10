@@ -7,8 +7,18 @@ import Select from "react-select";
 import { City, Country, State } from "country-state-city";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { db } from "../components/utils/config";
 
-function UserLogin() {
+function DoctorLogin() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -21,27 +31,18 @@ function UserLogin() {
   const [selectedState, setSelectedState] = useState("");
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [pinCode, setPinCode] = useState("");
   const [genders, setGenders] = useState([
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },
     { label: "Other", value: "other" },
   ]);
   const [selectedGender, setSelectedGender] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [birthDate, setBirthDate] = useState("");
   const [showError, setShowError] = useState(false);
 
-  const options = [
-    {
-      value: 1,
-      label: "Leanne Graham",
-    },
-    {
-      value: 2,
-      label: "Ervin Howell",
-    },
-  ];
+  const router = useRouter();
 
   useEffect(() => {
     const allCountries = Country.getAllCountries();
@@ -78,6 +79,7 @@ function UserLogin() {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (
       fullName === "" ||
       email === "" ||
@@ -88,27 +90,77 @@ function UserLogin() {
       selectedCountry.value === "" ||
       selectedState.value === "" ||
       selectedCity.value === "" ||
-      zipCode === "" ||
+      pinCode === "" ||
       selectedGender.value === "" ||
       birthDate === ""
     ) {
       setShowError(true);
+      setLoading(false);
       return;
     } else {
       setShowError(false);
-      console.log({
-        fullName,
-        email,
-        mobile,
-        degree,
-        specialization,
-        registrationNumber,
-        selectedCountry,
-        selectedState,
-        selectedCity,
-        zipCode,
-        selectedGender,
-        birthDate,
+      const q = query(
+        collection(db, "doctordetail"),
+        where("email", "==", email)
+      );
+      const unsubscribe = onSnapshot(q, async (querySnapshot) => {
+        let arr = querySnapshot.docs.filter((doc) => doc.email === email);
+        if (querySnapshot.docs.length > 0) {
+          // alert("User already exists");
+          setLoading(false);
+        } else {
+          axios
+            .post("https://gmtserver.onrender.com/generateOtp", {
+              email: email,
+            })
+            .then(async (response) => {
+              if (response.data.error == 0) {
+                addDoc(collection(db, "otp"), {
+                  email,
+                  otp: response.data.otp,
+                  expiresIn: Date.now() + 9 * 60 * 1000,
+                  used: 0,
+                }).then(() => {
+                  localStorage.setItem(
+                    "details",
+                    JSON.stringify({
+                      fullName,
+                      email,
+                      mobile,
+                      degree,
+                      specialization,
+                      registrationNumber,
+                      country: selectedCountry,
+                      state: selectedState,
+                      city: selectedCity,
+                      pinCode,
+                      gender: selectedGender,
+                      dob: birthDate,
+                    })
+                  );
+                  localStorage.setItem(
+                    "details",
+                    JSON.stringify({
+                      fullName,
+                      email,
+                      mobile,
+                      degree,
+                      specialization,
+                      registrationNumber,
+                      country: selectedCountry,
+                      state: selectedState,
+                      city: selectedCity,
+                      pinCode,
+                      gender: selectedGender,
+                      dob: birthDate,
+                    })
+                  );
+                  router.push("/doctor-otp-verification");
+                  setLoading(false);
+                });
+              }
+            });
+        }
       });
     }
   };
@@ -126,6 +178,7 @@ function UserLogin() {
         <div className="mx-16 my-12">
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={fullName}
@@ -137,6 +190,7 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="email"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={email}
@@ -148,6 +202,7 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="number"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={mobile}
@@ -162,34 +217,37 @@ function UserLogin() {
           </h2>
           <div className="relative z-0 pl-6 w-full my-8 group">
             <input
-              type="number"
+              placeholder=""
+              type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={degree}
               onChange={(e) => setDegree(e.target.value)}
             />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
               Degree
             </label>
           </div>
           <div className="relative z-0 pl-6 w-full my-8 group">
             <input
-              type="number"
+              placeholder=""
+              type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
               value={specialization}
               onChange={(e) => setSpecialization(e.target.value)}
             />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
               Specialization
             </label>
           </div>
           <div className="relative z-0 pl-6 w-full my-8 group">
             <input
+              placeholder=""
               type="text"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={email}
+              value={registrationNumber}
               onChange={(e) => setRegistrationNumber(e.target.value)}
             />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
               Registration Number
             </label>
           </div>
@@ -227,13 +285,14 @@ function UserLogin() {
           </div>
           <div className="relative z-0 w-full my-8 group">
             <input
+              placeholder=""
               type="number"
               className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
+              value={pinCode}
+              onChange={(e) => setPinCode(e.target.value)}
             />
             <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              ZIP Code
+              Pin Code
             </label>
           </div>
           <div className="my-7">
@@ -274,16 +333,15 @@ function UserLogin() {
                 type="submit"
                 className="min-w-80 text-white hover:text-[#1e40af] bg-transparent hover:bg-white border-2 border-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5"
               >
-                Submit
+                {loading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </div>
         </div>
       </form>
-
       <Footer />
     </>
   );
 }
 
-export default UserLogin;
+export default DoctorLogin;

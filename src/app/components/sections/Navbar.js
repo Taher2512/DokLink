@@ -75,11 +75,11 @@ function Navbar() {
             >
               <li>
                 <Link
-                  href="/user-login"
+                  href="/patient-login"
                   className="block px-4 py-2 hover:bg-gray-200"
                   onClick={() => setDropdownOpen(false)}
                 >
-                  User Sign In
+                  Patient Sign In
                 </Link>
               </li>
               <li>
