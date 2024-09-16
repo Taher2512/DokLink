@@ -20,7 +20,10 @@ export default function Home() {
   };
   return (
     <>
+    <div className="pt-4">
+
       <Navbar />
+    </div>
       <Hero
         scrollToRef={scrollToRef}
         servicesRef={servicesRef}

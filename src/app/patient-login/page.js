@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -144,7 +143,6 @@ function PatientLogin() {
       const unsubscribe = onSnapshot(q, async (querySnapshot) => {
         let arr = querySnapshot.docs.filter((doc) => doc.email === email);
         if (querySnapshot.docs.length > 0) {
-          // alert("User already exists");
           setLoading(false);
         } else {
           axios
@@ -174,21 +172,6 @@ function PatientLogin() {
                       suggestions: suggestions,
                     })
                   );
-                  localStorage.setItem(
-                    "details",
-                    JSON.stringify({
-                      fullName,
-                      email,
-                      mobile,
-                      country: selectedCountry,
-                      state: selectedState,
-                      city: selectedCity,
-                      pinCode,
-                      gender: selectedGender,
-                      dob: birthDate,
-                      suggestions: suggestions,
-                    })
-                  );
                   router.push("/patient-otp-verification");
                   setLoading(false);
                 });
@@ -200,12 +183,15 @@ function PatientLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-800">
+    <div className="min-h-screen bg-[#478de9]">
+      <div className="pt-4">
+
       <Navbar />
+      </div>
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-white text-center mb-12">Patient Sign In</h2>
-        <form onSubmit={submitForm} className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form onSubmit={submitForm} className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <InputField label="Full Name" value={fullName} onChange={setFullName} />
             <InputField label="Email address" type="email" value={email} onChange={setEmail} />
             <InputField label="Mobile No." type="tel" value={mobile} onChange={setMobile} />
@@ -214,11 +200,11 @@ function PatientLogin() {
             <SelectField label="City" options={cities} value={selectedCity} onChange={setSelectedCity} isDisabled={!selectedState} />
             <InputField label="Pin Code" type="number" value={pinCode} onChange={setPinCode} />
             <div className="relative">
-              <label className="text-sm text-gray-300 mb-1 block">Birth Date</label>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">Birth Date</label>
               <DatePicker
                 selected={birthDate}
                 onChange={setBirthDate}
-                className="w-full p-3 bg-white/5 border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholderText="Select Birth Date..."
                 showMonthDropdown
                 showYearDropdown
@@ -228,24 +214,24 @@ function PatientLogin() {
             </div>
             <SelectField label="Gender" options={genders} value={selectedGender} onChange={setSelectedGender} />
           </div>
-          <div className="mt-8">
-            <label className="text-sm text-gray-300 mb-1 block">Anything you want to suggest?</label>
+          <div className="mt-6">
+            <label className="text-sm font-medium text-gray-700 mb-1 block">Anything you want to suggest?</label>
             <textarea
               value={suggestions}
               onChange={(e) => setSuggestions(e.target.value)}
-              className="w-full p-3 bg-white/5 border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               rows="4"
             />
           </div>
           {showError && (
-            <div className="mt-6 p-4 bg-red-500/50 rounded-lg">
-              <p className="text-white text-center">Please fill out all the fields!</p>
+            <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+              <p className="text-center">Please fill out all the fields!</p>
             </div>
           )}
           <div className="mt-8 flex justify-center">
             <button
               type="submit"
-              className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition duration-300 ease-in-out"
             >
               {loading ? "Submitting..." : "Create Account"}
             </button>
@@ -259,19 +245,19 @@ function PatientLogin() {
 
 const InputField = ({ label, type = "text", value, onChange }) => (
   <div className="relative">
-    <label className="text-sm text-gray-300 mb-1 block">{label}</label>
+    <label className="text-sm font-medium text-gray-700 mb-1 block">{label}</label>
     <input
       type={type}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full p-3 bg-white/5 border border-gray-600 rounded-lg text-white"
+      className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
     />
   </div>
 );
 
 const SelectField = ({ label, options, value, onChange, isDisabled = false }) => (
   <div className="relative">
-    <label className="text-sm text-gray-300 mb-1 block">{label}</label>
+    <label className="text-sm font-medium text-gray-700 mb-1 block">{label}</label>
     <Select
       options={options}
       value={value}
@@ -280,20 +266,18 @@ const SelectField = ({ label, options, value, onChange, isDisabled = false }) =>
       className="react-select-container"
       classNamePrefix="react-select"
       styles={{
-        control: (provided) => ({
+        control: (provided, state) => ({
           ...provided,
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          borderColor: '#4B5563',
-          color: 'white',
-        }),
-        singleValue: (provided) => ({
-          ...provided,
-          color: 'white',
+          borderColor: state.isFocused ? '#3B82F6' : '#D1D5DB',
+          boxShadow: state.isFocused ? '0 0 0 1px #3B82F6' : 'none',
+          '&:hover': {
+            borderColor: '#3B82F6',
+          },
         }),
         option: (provided, state) => ({
           ...provided,
-          backgroundColor: state.isSelected ? '#4F46E5' : 'white',
-          color: state.isSelected ? 'white' : 'black',
+          backgroundColor: state.isSelected ? '#3B82F6' : state.isFocused ? '#E5E7EB' : 'white',
+          color: state.isSelected ? 'white' : '#1F2937',
         }),
       }}
     />

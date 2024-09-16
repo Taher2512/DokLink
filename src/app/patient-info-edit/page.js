@@ -55,7 +55,7 @@ export default function EditProfile() {
         className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden"
       >
         <div className="md:flex">
-          <div className="md:w-1/3 bg-gradient-to-b from-blue-400 to-blue-600 p-8 text-white">
+          <div className="md:w-1/3 bg-[#1E40AF] p-8 text-white">
             <h1 className="text-4xl font-bold mb-6">Edit Profile</h1>
             <p className="mb-4">Update your personal and health information to keep your profile current.</p>
             <div className="mt-8 flex flex-col items-center">
@@ -116,7 +116,7 @@ export default function EditProfile() {
                 <Button type="button" onClick={() => router.push('/dashboard')} variant="secondary">
                   Cancel
                 </Button>
-                <Button type="submit" variant="primary">
+                <Button type="submit" variant="primary" >
                   Save Changes
                 </Button>
               </div>

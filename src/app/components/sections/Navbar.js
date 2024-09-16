@@ -26,7 +26,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center justify-center md:w-full text-[#1e40af] mt-4">
+    <nav className="flex items-center justify-center md:w-full text-[#1e40af] ">
       <div className="md:px-8 px-6 py-1 bg-gray-200 flex md:gap-12 gap-8 items-center justify-center rounded-xl z-50">
         <Link
           href="/"
