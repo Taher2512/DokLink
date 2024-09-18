@@ -86,41 +86,7 @@ export const doctorData = {
       status: "pending",
       type: "Follow-up",
     },
-    {
-      patient: { name: "James Wilson", age: 72, id: "P011" },
-      date: "Sep 21, 2024",
-      time: "02:00 PM",
-      status: "confirmed",
-      type: "Test Results",
-    },
-    {
-      patient: { name: "Linda Martinez", age: 55, id: "P012" },
-      date: "Sep 22, 2024",
-      time: "09:30 AM",
-      status: "confirmed",
-      type: "Follow-up",
-    },
-    {
-      patient: { name: "Richard Jackson", age: 60, id: "P013" },
-      date: "Sep 22, 2024",
-      time: "01:00 PM",
-      status: "pending",
-      type: "New Patient",
-    },
-    {
-      patient: { name: "Barbara White", age: 68, id: "P014" },
-      date: "Sep 23, 2024",
-      time: "10:30 AM",
-      status: "confirmed",
-      type: "Follow-up",
-    },
-    {
-      patient: { name: "Thomas Harris", age: 52, id: "P015" },
-      date: "Sep 23, 2024",
-      time: "03:30 PM",
-      status: "confirmed",
-      type: "Test Results",
-    },
+    
   ],
   stats: {
     totalPatients: 250,
