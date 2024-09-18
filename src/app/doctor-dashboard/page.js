@@ -123,9 +123,11 @@ export default function DoctorDashboard() {
                 <h2 className="text-xl sm:text-2xl font-semibold text-[#1E40AF] mb-4 sm:mb-0">
                   Upcoming Appointments
                 </h2>
-                <button className="bg-[#1E40AF] text-white px-4 py-2 rounded-lg font-semibold hover:bg-teal-700 transition duration-300 w-full sm:w-auto">
-                  Manage Schedule
-                </button>
+                <Link href="/doctor-schedule">
+                  <button className="bg-[#1E40AF] text-white px-4 py-2 rounded-lg font-semibold hover:bg-teal-700 transition duration-300 w-full sm:w-auto">
+                    Manage Schedule
+                  </button>
+                </Link>
               </div>
               <div className="space-y-4">
                 {appointments
