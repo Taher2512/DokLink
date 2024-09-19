@@ -1,22 +1,17 @@
+// doctor-login/page.js
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { addDoc, collection, query, where, onSnapshot } from "firebase/firestore";
+import { db } from "../components/utils/config";
 import Navbar from "../components/sections/Navbar";
 import Footer from "../components/sections/Footer";
 import Select from "react-select";
 import { City, Country, State } from "country-state-city";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {
-  addDoc,
-  collection,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { db } from "../components/utils/config";
 
 function DoctorLogin() {
   const [fullName, setFullName] = useState("");
@@ -106,7 +101,6 @@ function DoctorLogin() {
       const unsubscribe = onSnapshot(q, async (querySnapshot) => {
         let arr = querySnapshot.docs.filter((doc) => doc.email === email);
         if (querySnapshot.docs.length > 0) {
-          // alert("User already exists");
           setLoading(false);
         } else {
           axios
@@ -138,23 +132,6 @@ function DoctorLogin() {
                       dob: birthDate,
                     })
                   );
-                  localStorage.setItem(
-                    "details",
-                    JSON.stringify({
-                      fullName,
-                      email,
-                      mobile,
-                      degree,
-                      specialization,
-                      registrationNumber,
-                      country: selectedCountry,
-                      state: selectedState,
-                      city: selectedCity,
-                      pinCode,
-                      gender: selectedGender,
-                      dob: birthDate,
-                    })
-                  );
                   router.push("/doctor-otp-verification");
                   setLoading(false);
                 });
@@ -166,182 +143,98 @@ function DoctorLogin() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center items-center mt-16">
-        <h2 className="text-white font-semibold text-2xl">Doctor Sign In</h2>
+    <div className="min-h-screen bg-[#478de9]">
+      <div className="pt-4">
+        <Navbar />
       </div>
-      <form
-        onSubmit={submitForm}
-        className="w-11/12 md:w-2/5 mx-auto mt-8 mb-16 border-2 rounded-xl"
-      >
-        <div className="mx-16 my-12">
-          <div className="relative z-0 w-full my-8 group">
-            <input
-              placeholder=""
-              type="text"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              Full Name
-            </label>
-          </div>
-          <div className="relative z-0 w-full my-8 group">
-            <input
-              placeholder=""
-              type="email"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              Email address
-            </label>
-          </div>
-          <div className="relative z-0 w-full my-8 group">
-            <input
-              placeholder=""
-              type="number"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              Mobile No.
-            </label>
-          </div>
-          <h2 className="text-white font-semibold text-xl">
-            Education Qualifications:
-          </h2>
-          <div className="relative z-0 pl-6 w-full my-8 group">
-            <input
-              placeholder=""
-              type="text"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={degree}
-              onChange={(e) => setDegree(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
-              Degree
-            </label>
-          </div>
-          <div className="relative z-0 pl-6 w-full my-8 group">
-            <input
-              placeholder=""
-              type="text"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={specialization}
-              onChange={(e) => setSpecialization(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
-              Specialization
-            </label>
-          </div>
-          <div className="relative z-0 pl-6 w-full my-8 group">
-            <input
-              placeholder=""
-              type="text"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={registrationNumber}
-              onChange={(e) => setRegistrationNumber(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:pl-8">
-              Registration Number
-            </label>
-          </div>
-          <div className="my-7">
-            <Select
-              options={countries}
-              defaultValue={{}}
-              value={selectedCountry}
-              placeholder="Select Country..."
-              isSearchable
-              onChange={setSelectedCountry}
-            />
-          </div>
-          <div className="my-7">
-            <Select
-              isDisabled={selectedCountry === ""}
-              options={states}
-              defaultValue={{}}
-              value={selectedState}
-              placeholder="Select State..."
-              isSearchable
-              onChange={setSelectedState}
-            />
-          </div>
-          <div className="my-7">
-            <Select
-              isDisabled={selectedState === ""}
-              options={cities}
-              defaultValue={{}}
-              value={selectedCity}
-              placeholder="Select City..."
-              isSearchable
-              onChange={setSelectedCity}
-            />
-          </div>
-          <div className="relative z-0 w-full my-8 group">
-            <input
-              placeholder=""
-              type="number"
-              className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-white peer"
-              value={pinCode}
-              onChange={(e) => setPinCode(e.target.value)}
-            />
-            <label className="peer-focus:font-medium absolute text-lg text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-              Pin Code
-            </label>
-          </div>
-          <div className="my-7">
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={birthDate}
-              value={birthDate}
-              onChange={setBirthDate}
-              showMonthDropdown
-              showYearDropdown
-              yearDropdownItemNumber={60}
-              scrollableYearDropdown
-              showIcon
-              withPortal
-              placeholderText="Select Birth Date..."
-            />
-          </div>
-          <div className="my-7">
-            <Select
-              options={genders}
-              defaultValue={{}}
-              value={selectedGender}
-              placeholder="Select Gender..."
-              onChange={setSelectedGender}
-            />
-          </div>
-          <div className="mt-16">
-            {showError && (
-              <div className="flex mb-7 bg-red-500 p-3 justify-center items-center rounded-md">
-                <p className="text-white font-semibold text-sm">
-                  Please fill out all the fields!
-                </p>
-              </div>
-            )}
-
-            <div className="flex justify-center items-center">
-              <button
-                type="submit"
-                className="min-w-80 text-white hover:text-[#1e40af] bg-transparent hover:bg-white border-2 border-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5"
-              >
-                {loading ? "Submitting..." : "Submit"}
-              </button>
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-4xl font-bold text-white text-center mb-12">Doctor Sign In</h2>
+        <form onSubmit={submitForm} className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <InputField label="Full Name" value={fullName} onChange={setFullName} />
+            <InputField label="Email address" type="email" value={email} onChange={setEmail} />
+            <InputField label="Mobile No." type="tel" value={mobile} onChange={setMobile} />
+            <InputField label="Degree" value={degree} onChange={setDegree} />
+            <InputField label="Specialization" value={specialization} onChange={setSpecialization} />
+            <InputField label="Registration Number" value={registrationNumber} onChange={setRegistrationNumber} />
+            <SelectField label="Country" options={countries} value={selectedCountry} onChange={setSelectedCountry} />
+            <SelectField label="State" options={states} value={selectedState} onChange={setSelectedState} isDisabled={!selectedCountry} />
+            <SelectField label="City" options={cities} value={selectedCity} onChange={setSelectedCity} isDisabled={!selectedState} />
+            <InputField label="Pin Code" type="number" value={pinCode} onChange={setPinCode} />
+            <div className="relative">
+              <label className="text-sm font-medium text-gray-700 mb-1 block">Birth Date</label>
+              <DatePicker
+                selected={birthDate}
+                onChange={setBirthDate}
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholderText="Select Birth Date..."
+                showMonthDropdown
+                showYearDropdown
+                yearDropdownItemNumber={60}
+                scrollableYearDropdown
+              />
             </div>
+            <SelectField label="Gender" options={genders} value={selectedGender} onChange={setSelectedGender} />
           </div>
-        </div>
-      </form>
+          {showError && (
+            <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+              <p className="text-center">Please fill out all the fields!</p>
+            </div>
+          )}
+          <div className="mt-8 flex justify-center">
+            <button
+              type="submit"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition duration-300 ease-in-out"
+            >
+              {loading ? "Submitting..." : "Create Account"}
+            </button>
+          </div>
+        </form>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
+
+const InputField = ({ label, type = "text", value, onChange }) => (
+  <div className="relative">
+    <label className="text-sm font-medium text-gray-700 mb-1 block">{label}</label>
+    <input
+      type={type}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
+);
+
+const SelectField = ({ label, options, value, onChange, isDisabled = false }) => (
+  <div className="relative">
+    <label className="text-sm font-medium text-gray-700 mb-1 block">{label}</label>
+    <Select
+      options={options}
+      value={value}
+      onChange={onChange}
+      isDisabled={isDisabled}
+      className="react-select-container"
+      classNamePrefix="react-select"
+      styles={{
+        control: (provided, state) => ({
+          ...provided,
+          borderColor: state.isFocused ? '#3B82F6' : '#D1D5DB',
+          boxShadow: state.isFocused ? '0 0 0 1px #3B82F6' : 'none',
+          '&:hover': {
+            borderColor: '#3B82F6',
+          },
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          backgroundColor: state.isSelected ? '#3B82F6' : state.isFocused ? '#E5E7EB' : 'white',
+          color: state.isSelected ? 'white' : '#1F2937',
+        }),
+      }}
+    />
+  </div>
+);
 
 export default DoctorLogin;

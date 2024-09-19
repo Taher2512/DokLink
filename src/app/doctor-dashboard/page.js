@@ -37,7 +37,7 @@ export default function DoctorDashboard() {
               <p className="text-sm opacity-80">{specialization}</p>
             </div>
           </div>
-          <Link href="/edit-profile">
+          <Link href="/doctor-info-edit">
             <button className="text-white hover:bg-white hover:text-teal-600 rounded-full p-2 transition duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
