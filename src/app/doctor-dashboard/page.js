@@ -77,14 +77,7 @@ export default function DoctorDashboard() {
                 label="Emergency Contact"
                 value={contactInfo.emergencyContact}
               />
-              <InfoItem
-                label="Weekday Hours"
-                value={consultationHours.weekdays}
-              />
-              <InfoItem
-                label="Weekend Hours"
-                value={consultationHours.weekends}
-              />
+              
               <InfoItem label="Total Patients" value={stats.totalPatients} />
               <InfoItem
                 label="Avg. Appointments/Day"
@@ -94,6 +87,24 @@ export default function DoctorDashboard() {
                 label="Satisfaction Rate"
                 value={stats.satisfactionRate}
               />
+            </div>
+          </section>
+
+          <section className="bg-white rounded-xl p-4 sm:p-6 shadow-md border border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-[#1E40AF]">
+              Consultation Hours
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {Object.entries(consultationHours).map(([day, data]) => (
+                <div key={day} className="bg-gray-50 p-3 rounded-lg">
+                  <h3 className="font-semibold text-lg mb-2">{day}</h3>
+                  <p className="text-sm">Time: {data.time || 'Not set'}</p>
+                  <p className="text-sm">Location: {data.location || 'Not set'}</p>
+                  <p className="text-sm">
+                    Status: {data.available ? 'Available' : 'Unavailable'}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 

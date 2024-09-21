@@ -12,8 +12,13 @@ export const doctorData = {
     emergencyContact: "+1 (555) 987-6543",
   },
   consultationHours: {
-    weekdays: "9:00 AM - 5:00 PM",
-    weekends: "10:00 AM - 2:00 PM",
+    Monday: { time: '9:00 AM - 5:00 PM', location: 'Central Hospital', available: true },
+    Tuesday: { time: '9:00 AM - 5:00 PM', location: 'Central Hospital', available: true },
+    Wednesday: { time: '9:00 AM - 5:00 PM', location: 'Central Hospital', available: true },
+    Thursday: { time: '9:00 AM - 5:00 PM', location: 'Central Hospital', available: true },
+    Friday: { time: '9:00 AM - 5:00 PM', location: 'Central Hospital', available: true },
+    Saturday: { time: '10:00 AM - 2:00 PM', location: 'City Clinic', available: true },
+    Sunday: { time: '', location: '', available: false },
   },
   appointments: [
     {

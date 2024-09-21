@@ -3,10 +3,22 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { doctorData } from '../doctor-data/doctorData'
 import { motion } from 'framer-motion'
+import Switch from 'react-switch'
+import TimePicker from 'react-time-picker'
+import 'react-time-picker/dist/TimePicker.css'
 
 export default function EditDoctorProfile() {
   const router = useRouter()
   const [formData, setFormData] = useState(doctorData)
+  const [consultationHours, setConsultationHours] = useState({
+    Monday: { time: '', location: '', available: false },
+    Tuesday: { time: '', location: '', available: false },
+    Wednesday: { time: '', location: '', available: false },
+    Thursday: { time: '', location: '', available: false },
+    Friday: { time: '', location: '', available: false },
+    Saturday: { time: '', location: '', available: false },
+    Sunday: { time: '', location: '', available: false },
+  })
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -40,23 +52,33 @@ export default function EditDoctorProfile() {
     }
   }
 
+  const handleConsultationChange = (day, field, value) => {
+    setConsultationHours(prevState => ({
+      ...prevState,
+      [day]: {
+        ...prevState[day],
+        [field]: value,
+      },
+    }))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Updated doctor data:', formData)
+    console.log('Updated doctor data:', { ...formData, consultationHours })
     router.push('/doctor-dashboard')
   }
 
   return (
-    <div className="bg-[#478de9] min-h-screen p-8 flex items-center justify-center">
+    <div className="bg-[#478de9] min-h-screen p-4 md:p-8 flex items-center justify-center">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden"
+        className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden"
       >
         <div className="md:flex">
-          <div className="md:w-1/3 bg-[#1E40AF] p-8 text-white">
-            <h1 className="text-4xl font-bold mb-6">Edit Doctor Profile</h1>
+          <div className="md:w-1/4 bg-[#1E40AF] p-6 md:p-8 text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6">Edit Doctor Profile</h1>
             <p className="mb-4">Keep your professional information up to date for your patients and colleagues.</p>
             <div className="mt-8 flex flex-col items-center">
               <div className="relative">
@@ -80,7 +102,7 @@ export default function EditDoctorProfile() {
               </div>
             </div>
           </div>
-          <div className="md:w-2/3 p-8">
+          <div className="md:w-3/4 p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <InputField label="Name" name="name" value={formData.name} onChange={handleChange} />
@@ -102,9 +124,43 @@ export default function EditDoctorProfile() {
               </div>
 
               <SectionTitle>Consultation Hours</SectionTitle>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <InputField label="Weekdays" name="weekdays" value={formData.consultationHours.weekdays} onChange={(e) => handleNestedChange('consultationHours', 'weekdays', e.target.value)} />
-                <InputField label="Weekends" name="weekends" value={formData.consultationHours.weekends} onChange={(e) => handleNestedChange('consultationHours', 'weekends', e.target.value)} />
+              <div className="space-y-4">
+                {Object.entries(consultationHours).map(([day, data]) => (
+                  <div key={day} className="flex flex-wrap items-center space-x-2 space-y-2 sm:space-y-0">
+                    <span className="w-full sm:w-24 font-medium">{day}</span>
+                    <input
+                      type="text"
+                      placeholder="Time"
+                      value={data.time}
+                      onChange={(e) => handleConsultationChange(day, 'time', e.target.value)}
+                      className="flex-grow sm:flex-grow-0 sm:w-32 p-2 border border-gray-300 rounded-md"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Location"
+                      value={data.location}
+                      onChange={(e) => handleConsultationChange(day, 'location', e.target.value)}
+                      className="flex-grow p-2 border border-gray-300 rounded-md"
+                    />
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm">{data.available ? 'Available' : 'Unavailable'}</span>
+                      <Switch
+                        checked={data.available}
+                        onChange={(checked) => handleConsultationChange(day, 'available', checked)}
+                        onColor="#86d3ff"
+                        onHandleColor="#2693e6"
+                        handleDiameter={24}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                        height={20}
+                        width={48}
+                        className="react-switch"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
               
               <div className="flex justify-end space-x-4 mt-8">

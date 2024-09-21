@@ -21,6 +21,8 @@
     "react-datepicker": "^7.3.0",
     "react-dom": "^18",
     "react-select": "^5.8.0",
+    "react-switch": "^7.0.0",
+    "react-time-picker": "^7.0.0",
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
