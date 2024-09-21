@@ -102,7 +102,7 @@ export default function DoctorDashboard() {
             {/* Today's Appointments */}
             <section className="bg-white rounded-xl p-4 sm:p-6 shadow-md border border-gray-200">
               <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-[#1E40AF]">
-                Today's Appointments
+                Today&apos;s Appointments
               </h2>
               <div className="space-y-4">
                 {appointments
