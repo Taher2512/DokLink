@@ -77,7 +77,6 @@ export default function DoctorDashboard() {
                 label="Emergency Contact"
                 value={contactInfo.emergencyContact}
               />
-              
               <InfoItem label="Total Patients" value={stats.totalPatients} />
               <InfoItem
                 label="Avg. Appointments/Day"
