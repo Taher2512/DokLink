@@ -21,8 +21,8 @@ function About() {
         Our Team
       </h1>
 
-      <div className=" grid sm:grid-cols-3 sm:grid-rows-2  grid-rows-6 gap-x-8 gap-y-4 w-[90%] ml-20 mt-10 sm:h-auto h-[45rem]">
-        <div className="max-h-96 overflow-hidden rounded-xl">
+      <div className="grid sm:grid-cols-3 sm:grid-rows-2 grid-rows-6 gap-x-8 gap-y-4 w-[90%] ml-5 sm:ml-20 mt-10 sm:h-auto h-[80rem]">
+        <div className="sm:max-h-96 overflow-hidden rounded-xl">
           <img
             src="./member1.jpg"
             className="w-full h-full object-cover "
