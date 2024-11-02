@@ -21,7 +21,7 @@ function About() {
         Our Team
       </h1>
 
-      <div className=" grid sm:grid-cols-2 sm:grid-rows-2  grid-rows-4 gap-x-8 gap-y-4 w-[60%] ml-20 mt-10 sm:h-auto h-[45rem]">
+      <div className=" grid sm:grid-cols-3 sm:grid-rows-2  grid-rows-6 gap-x-8 gap-y-4 w-[90%] ml-20 mt-10 sm:h-auto h-[45rem]">
         <div className="max-h-96 overflow-hidden rounded-xl">
           <img
             src="./member1.jpg"
@@ -36,6 +36,13 @@ function About() {
             alt="Team Member 2"
           />
         </div>
+        <div className="max-h-96 rounded-xl overflow-hidden">
+          <img
+            src="./member3.jpeg"
+            className="w-full h-full object-cover object-center sm:object-bottom"
+            alt="Team Member 2"
+          />
+        </div>
 
         <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24 row-start-2">
           <h1 className="GilroyBold sm:text-2xl text-lg">
@@ -43,9 +50,13 @@ function About() {
           </h1>
           <h3 className="GilroyLight sm:text-xl text-sm">Director, Doklink</h3>
         </div>
-        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24">
+        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24 row-start-4 sm:row-start-2">
           <h1 className="GilroyBold sm:text-2xl text-lg">Krishnendu Gupta</h1>
           <h3 className="GilroyLight sm:text-xl text-sm">Director, Doklink</h3>
+        </div>
+        <div className="flex-col px-8 py-4 bg-white/20 text-white rounded-xl max-h-24 row-start-6 sm:row-start-2">
+          <h1 className="GilroyBold sm:text-2xl text-lg">Sowhardya Biswas</h1>
+          <h3 className="GilroyLight sm:text-xl text-sm">COO, Doklink</h3>
         </div>
       </div>
       <Footer />
