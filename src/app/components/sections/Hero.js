@@ -71,7 +71,7 @@ function Hero({ scrollToRef, servicesRef, contactRef }) {
         />
         <img
           src="./hero-4.png"
-          className="h-[95vh] w-auto object-cover xl:block hidden"
+          className="h-[85vh] w-auto object-cover xl:block hidden"
         />
         <img
           src="./hero-4.png"
